@@ -4,9 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\Laboratorium;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf; // tambahkan use ini di atas
+
 
 class LaboratoriumController extends Controller
+{   
+    public function exportPDF()
 {
+    $laboratorium = Laboratorium::all();
+    $pdf = Pdf::loadView('laboratorium.pdf', compact('laboratorium'));
+    return $pdf->download('data_laboratorium.pdf');
+}
+
+public function show(Laboratorium $laboratorium)
+{
+    return view('laboratorium.show', compact('laboratorium'));
+}
+
+
+
     public function index(Request $request)
 {
     $keyword = $request->input('search');
@@ -18,7 +34,7 @@ class LaboratoriumController extends Controller
                   ->orWhere('penanggung_jawab', 'like', "%{$keyword}%");
         })
         ->latest()
-        ->paginate(10);
+        ->paginate(12);
 
     return view('laboratorium.index', compact('laboratoria', 'keyword'));
 }

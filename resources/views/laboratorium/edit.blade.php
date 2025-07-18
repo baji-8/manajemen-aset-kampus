@@ -1,40 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
     <title>Edit Laboratorium</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 30px;
+            background-color: #ffffff;
+        }
+
+        .form-label {
+            font-weight: 500;
+        }
+
+        .btn-success {
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
+        .btn-secondary {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    </style>
 </head>
-<body class="container py-4">
+<body>
 
-    <h1>Edit Laboratorium</h1>
+    <div class="form-container">
+        <div class="card">
+            <h3 class="mb-4 text-center fw-semibold">Edit Laboratorium</h3>
 
-    <form action="{{ route('laboratorium.update', $laboratorium->id) }}" method="POST">
-        @csrf
-        @method('PUT')
+            <form action="{{ route('laboratorium.update', $laboratorium->id) }}" method="POST">
+                @csrf
+                @method('PUT')
 
-        <div class="mb-3">
-            <label>Nama</label>
-            <input type="text" name="nama" class="form-control" value="{{ $laboratorium->nama }}" required>
+                <div class="mb-3">
+                    <label for="nama" class="form-label">Nama Laboratorium</label>
+                    <input type="text" name="nama" id="nama" class="form-control" value="{{ $laboratorium->nama }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="lokasi" class="form-label">Lokasi</label>
+                    <input type="text" name="lokasi" id="lokasi" class="form-control" value="{{ $laboratorium->lokasi }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="penanggung_jawab" class="form-label">Penanggung Jawab</label>
+                    <input type="text" name="penanggung_jawab" id="penanggung_jawab" class="form-control" value="{{ $laboratorium->penanggung_jawab }}" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="fasilitas" class="form-label">Fasilitas</label>
+                    <textarea name="fasilitas" id="fasilitas" class="form-control" rows="4">{{ $laboratorium->fasilitas }}</textarea>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a href="{{ route('laboratorium.index') }}" class="btn btn-secondary">Kembali</a>
+                    <button type="submit" class="btn btn-success">Update</button>
+                </div>
+            </form>
         </div>
-
-        <div class="mb-3">
-            <label>Lokasi</label>
-            <input type="text" name="lokasi" class="form-control" value="{{ $laboratorium->lokasi }}" required>
-        </div>
-
-        <div class="mb-3">
-            <label>Penanggung Jawab</label>
-            <input type="text" name="penanggung_jawab" class="form-control" value="{{ $laboratorium->penanggung_jawab }}" required>
-        </div>
-
-        <div class="mb-3">
-            <label>Fasilitas</label>
-            <textarea name="fasilitas" class="form-control">{{ $laboratorium->fasilitas }}</textarea>
-        </div>
-
-        <button class="btn btn-success">Update</button>
-        <a href="{{ route('laboratorium.index') }}" class="btn btn-secondary">Kembali</a>
-    </form>
+    </div>
 
 </body>
 </html>

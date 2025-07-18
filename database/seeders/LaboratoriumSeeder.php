@@ -3,12 +3,15 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;  
 use App\Models\Laboratorium;
 
 class LaboratoriumSeeder extends Seeder
 {
     public function run(): void
     {
+        DB::table('laboratoria')->truncate();
+        
         $data = [
             ['nama' => 'Lab-TI', 'lokasi' => 'Kampus E533', 'penanggung_jawab' => 'Bayu Aji', 'fasilitas' => '25 unit PC, LCD projector'],
             ['nama' => 'Lab-Jaringan', 'lokasi' => 'Kampus E534', 'penanggung_jawab' => 'Ahmad Fikri', 'fasilitas' => 'Router, Switch, 20 unit PC'],
@@ -19,7 +22,12 @@ class LaboratoriumSeeder extends Seeder
             ['nama' => 'Lab-Cloud', 'lokasi' => 'Kampus E236', 'penanggung_jawab' => 'Fajar Nugroho', 'fasilitas' => 'Cloud server, PC, switch'],
             ['nama' => 'Lab-AI', 'lokasi' => 'Gedung B202', 'penanggung_jawab' => 'Rendi Pratama', 'fasilitas' => 'GPU server, dataset, 10 unit PC'],
             ['nama' => 'Lab-Web', 'lokasi' => 'Gedung C101', 'penanggung_jawab' => 'Tina Agustina', 'fasilitas' => 'PC dengan XAMPP, internet cepat'],
-            ['nama' => 'Lab-Pemrograman', 'lokasi' => 'Kampus E213', 'penanggung_jawab' => 'Lina Sari', 'fasilitas' => '25 PC, VSCode, Laravel']
+            ['nama' => 'Lab-Pemrograman', 'lokasi' => 'Kampus E213', 'penanggung_jawab' => 'Lina Sari', 'fasilitas' => '25 PC, VSCode, Laravel'],
+            ['nama' => 'Lab-Data Science', 'lokasi' => 'Kampus D204', 'penanggung_jawab' => 'Ali Wibowo', 'fasilitas' => 'Jupyter Notebook, PC, GPU'],
+            ['nama' => 'Lab-Game Dev', 'lokasi' => 'Gedung E311', 'penanggung_jawab' => 'Mega Puspita', 'fasilitas' => 'Unity, Unreal Engine, VR Kit'],
+            ['nama' => 'Lab-Design', 'lokasi' => 'Gedung C202', 'penanggung_jawab' => 'Yoga Saputra', 'fasilitas' => 'Wacom tablet, Adobe Suite'],
+            ['nama' => 'Lab-Elektro', 'lokasi' => 'Kampus F301', 'penanggung_jawab' => 'Herlina Kusuma', 'fasilitas' => 'Multimeter, Oscilloscope, breadboard'],
+            ['nama' => 'Lab-Security', 'lokasi' => 'Kampus E237', 'penanggung_jawab' => 'Budi Prasetyo', 'fasilitas' => 'Firewall tools, honeypot, 15 PC']
         ];
 
         foreach ($data as $lab) {
