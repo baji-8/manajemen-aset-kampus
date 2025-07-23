@@ -11,3 +11,7 @@ Route::get('/laboratorium', function () {
 Route::get('/laboratorium/export-pdf', [LaboratoriumController::class, 'exportPDF'])->name('laboratorium.export.pdf');
 
 Route::resource('laboratorium', LaboratoriumController::class);
+
+use App\Http\Controllers\ScheduleController;
+
+Route::resource('schedule', ScheduleController::class);
